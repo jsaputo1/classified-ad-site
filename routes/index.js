@@ -10,7 +10,7 @@ module.exports = (db) => {
   router.post("/logout", (req, res) => {
     req.session.email = null;
     req.session.buyer_id = null;
-    req.session.is_admin = "not_admin";
+    req.session.is_admin = null;
     res.redirect("/login");
   });
 

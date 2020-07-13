@@ -52,10 +52,13 @@ module.exports = (db) => {
           const listings = listingResults.rows;
           const messages = messagesResults.rows;
           const adminUser = userPermissionsResults.rows;
+
           if (adminUser.length) {
             req.session.is_admin = adminUser;
+            userAdmin = true;
           } else {
             req.session.is_admin = null;
+            userAdmin = false;
           }
           console.log("ADMIN COOKIE:", req.session.is_admin);
           const templateVars = {
@@ -63,6 +66,7 @@ module.exports = (db) => {
             listings,
             messages,
             username,
+            userAdmin,
           };
           res.render("user", templateVars);
         }
