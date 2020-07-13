@@ -5,8 +5,8 @@ footer {
   height: 8rem;
   width: 100%;
   padding: 1.5em;
-  background-color: rgb(22, 3, 15);
-  background-image: url("https://www.transparenttextures.com/patterns/light-wool.png");
+  background-color: #373373;
+  background-image: url("/images/fabric-1-dark.png");
   color: #FFFFFF;
 
   span {
@@ -23,12 +23,3 @@ footer {
   }
 }
 
-@media only screen and (min-width: 1024px) {
-
-  footer {
-    span {
-      font-size: 18px;
-    }
-  }
-
-}
