@@ -1,142 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>All the listings</title>
 
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/listings.css" type="text/css" />
+<head>
+  <title>All the listings</title>
 
-    <!-- Custom fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Mirza:wght@400;700&family=Source+Sans+Pro:wght@300;700&display=swap"
-      rel="stylesheet"
-    >
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/listings.css" type="text/css" />
 
-    <!-- Global layout CSS -->
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <!-- Custom fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Mirza:wght@400;700&family=Source+Sans+Pro:wght@300;700&display=swap"
+    rel="stylesheet">
 
-    <!-- Header CSS -->
-    <link rel="stylesheet" href="/styles/header.css" type="text/css" />
+  <!-- Global layout CSS -->
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
-    <!-- Listings page CSS -->
-    <link rel="stylesheet" href="/styles/listings.css" type="text/css" />
+  <!-- Header CSS -->
+  <link rel="stylesheet" href="/styles/header.css" type="text/css" />
 
-    <!-- Footer CSS -->
-    <link rel="stylesheet" href="/styles/footer.css" type="text/css" />
+  <!-- Listings page CSS -->
+  <link rel="stylesheet" href="/styles/listings.css" type="text/css" />
 
-    <!-- Fontawesome custom icons -->
-    <script
-      src="https://kit.fontawesome.com/f0b575b405.js"
-      crossorigin="anonymous"
-    ></script>
+  <!-- Footer CSS -->
+  <link rel="stylesheet" href="/styles/footer.css" type="text/css" />
 
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
+  <!-- Fontawesome custom icons -->
+  <script src="https://kit.fontawesome.com/f0b575b405.js" crossorigin="anonymous"></script>
 
-    <!-- Client-side JS -->
-    <script type="text/javascript" src="/scripts/client.js"></script>
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
 
-    <!-- Disabling zooming on mobile devices so as not to prevent using the mobile layout -->
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
-    />
-  </head>
+  <!-- Client-side JS -->
+  <script type="text/javascript" src="/scripts/client.js"></script>
 
-  <body>
-    <%- include('partials/_header') %>
+  <!-- Disabling zooming on mobile devices so as not to prevent using the mobile layout -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+</head>
 
-    <main>
-      <section>
-        <div class="listings-header">
-          <h1>
-            Current listings
-          </h1>
-          <div>
-            <form method="POST" action="/listings" id="filter">
-              <!-- <label>
-                Sort by price
-              </label> -->
-              <!-- <input placeholder="Please specify..." /> -->
-              <button type="submit" id="filter-button">
-                Sort by price
-              </button>
-            </form>
-            <form method="GET" action="/listings/new">
-              <button type="submit" id="new-listing-button">
-                Add a new listing
-              </button>
-            </form>
-          </div>
+<body>
+  <%- include('partials/_header') %>
+  <main>
+
+    <div class="listings-header">
+      <h1>
+        Current listings
+      </h1>
+      <form method="POST" action="/listings" id="filter">
+        <button type="submit" id="filter-button">
+          Sort by price
+        </button>
+      </form>
+    </div>
+    <!-- move to header
+        <form method="GET" action="/listings/new">
+        <button type="submit" id="new-listing-button">
+          Add a new listing
+        </button>
+      </form> -->
+    <div class="all-listings">
+      <% for(value in products) { %>
+      <div class="single-listing" id="<%= products[value].id%>">
+        <div class="thumbnail">
+          <a href="<%= products[value].thumbnail_photo_url%>" target="new">
+            <img src="<%= products[value].thumbnail_photo_url%>" />
+          </a>
         </div>
-
-        <div id="listings-container">
-          <div id="all-listings">
-            <% for(value in products) { %>
-            <div class="one-listing" id="<%= products[value].id%>">
-              <div class="listing-info">
-                <a
-                  href="<%= products[value].thumbnail_photo_url%>"
-                  target="new"
-                >
-                  <img src="<%= products[value].thumbnail_photo_url%>" />
-                </a>
-                <div>
-                  <div class="listing-parameters">
-                    <h3>
-                      <%= products[value].title%>
-                    </h3>
-                    <div>
-                      <span>CAD <%= products[value].price%></span>
-
-                      <span>Posted on: <%= products[value].date%></span>
-                    </div>
-                  </div>
-                  <article class="listing-description">
-                    <%= products[value].description %>
-                  </article>
-                </div>
-              </div>
-              <div class="listing-buttons">
-                <% if (isFavorite(products[value].id, favorites)) { %>
-                <form
-                  method="POST"
-                  action="/favorites/remove_favorite/<%=products[value].id%>"
-                  class="remove-favorite-form"
-                >
-                  <button type="submit" class="button-favorite">
-                    <i class="fas fa-heart"></i>
-                  </button>
-                </form>
-                <% } else { %>
-                <form
-                  method="POST"
-                  action="/favorites/add_favorite/<%=products[value].id%>"
-                  class="add-favorite-form"
-                >
-                  <button type="submit" class="button-favorite">
-                    <i class="far fa-heart"></i>
-                  </button>
-                </form>
-                <% } %>
-                <form
-                  method="GET"
-                  action="/messages/listings/<%=products[value].id%>/messages "
-                >
-                  <button type="submit" class="new-message-button">
-                    Contact
-                  </button>
-                </form>
-              </div>
-            </div>
-            <hr />
+        <div class="listing-details-container">
+          <h2>
+            <%= products[value].title%>
+          </h2>
+          <h5>
+            Posted on: <%= products[value].date%>
+          </h5>
+          <h4 class="price">
+            $<%= products[value].price%>
+          </h4>
+          <h4>
+            <%= products[value].description %>
+          </h4>
+          <div class="listing-buttons">
+            <% if (isFavorite(products[value].id, favorites)) { %> <form method="POST"
+              action="/favorites/remove_favorite/<%=products[value].id%>" class="remove-favorite-form">
+              <button type="submit" class="button-favorite">
+                <i class="fas fa-heart"></i>
+              </button>
+            </form>
+            <% } else { %>
+            <form method="POST" action="/favorites/add_favorite/<%=products[value].id%>" class="add-favorite-form">
+              <button type="submit" class="button-favorite">
+                <i class="far fa-heart"></i>
+              </button>
+            </form>
             <% } %>
+            <form method="GET" action="/messages/listings/<%=products[value].id%>/messages ">
+              <button type="submit" class="new-message-button">
+                Contact
+              </button>
+            </form>
           </div>
         </div>
-      </section>
-    </main>
+      </div>
 
-    <%- include('partials/_footer') %>
-  </body>
+
+      <% } %>
+
+
+    </div>
+
+
+
+  </main>
+
+  <%- include('partials/_footer') %>
+</body>
+
 </html>
