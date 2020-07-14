@@ -65,7 +65,7 @@
           <a href="<%= products[value].thumbnail_photo_url%>" target="new">
             <img src="<%= products[value].thumbnail_photo_url%>" />
           </a>
-          <div class="favorite-button">
+          <div class="button-favorite-position">
             <% if (isFavorite(products[value].id, favorites)) { %> <form method="POST"
               action="/favorites/remove_favorite/<%=products[value].id%>" class="remove-favorite-form">
               <button type="submit" class="button-favorite">
