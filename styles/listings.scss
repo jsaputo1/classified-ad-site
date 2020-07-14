@@ -1,6 +1,24 @@
 // Variables
 $grey: #e9eaea;
 $greyBottomBorder: 5px solid $grey;
+$tablet-width: 1100px;
+$mobile-width: 700px;
+
+
+//Mix-Ins
+
+@mixin tablet {
+  @media (max-width: $tablet-width) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: $mobile-width) {
+    @content;
+  }
+}
+
 
 .listings-header {
   display: flex;
@@ -33,6 +51,15 @@ $greyBottomBorder: 5px solid $grey;
     background-color: #f8f9f9;
     transition-duration: 0.4s;
   }
+  @include tablet() {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+   }
+   @include mobile() {
+    width: 100%;
+    flex-direction: column;
+   }
 }
 
 .thumbnail {
@@ -44,6 +71,13 @@ $greyBottomBorder: 5px solid $grey;
     width: 275px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
+  @include tablet() {
+    margin: 0;
+    justify-content: flex-start;
+   }
+   @include mobile() {
+    margin: 0 auto;
+   }
 }
 
 .listing-details-text {
@@ -70,6 +104,9 @@ $greyBottomBorder: 5px solid $grey;
     margin: 0px;
     opacity: 0.3;
   }
+  @include tablet() {
+    justify-content: center;
+   }
 }
 
 .price {
@@ -79,6 +116,9 @@ $greyBottomBorder: 5px solid $grey;
 .button-favorite-position {
   position: absolute;
   margin: 3px 3px 0px 0px;
+  @include tablet() {
+    margin: 3px 0px 0px 3px;
+   }
 }
 
 .button-favorite {
