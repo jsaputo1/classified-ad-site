@@ -4,6 +4,10 @@ $greyBottomBorder: 5px solid $grey;
 
 header {
   border-bottom: $greyBottomBorder;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1;
 }
 
 nav {
