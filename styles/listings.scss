@@ -29,6 +29,9 @@ $mobile-width: 700px;
   border: 1px solid $grey;
   background-color: #ffffff;
   border-bottom: $greyBottomBorder;
+  h1 {
+    font-weight: 600;
+  }
 }
 
 .all-listings {
@@ -90,6 +93,7 @@ $mobile-width: 700px;
   h2 {
     text-align: center;
     margin: 10px 0px;
+    font-weight: 600;
   }
 
   h3 {
@@ -98,11 +102,15 @@ $mobile-width: 700px;
 
   h4 {
     margin: 0;
+    font-weight: 400;
+    margin: 0px 20px;
   }
 
   h5 {
     margin: 0px;
     opacity: 0.3;
+    font-weight: 300;
+
   }
   @include tablet() {
     justify-content: center;
@@ -145,9 +153,9 @@ $mobile-width: 700px;
   text-decoration: none;
   display: inline-block;
   padding: 8px 15px;
-  cursor: pointer;
-  margin: 15px;
+  margin: 20px 15px;
   &:hover {
+    cursor: pointer;
     color: $grey;
     background-color: #25224d;
     text-shadow: 2px 2px #000000;

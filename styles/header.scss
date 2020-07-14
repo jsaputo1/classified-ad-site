@@ -1,6 +1,7 @@
 // Variables
 $grey: #e9eaea;
 $greyBottomBorder: 5px solid $grey;
+$purple: #373373;
 
 header {
   border-bottom: $greyBottomBorder;
@@ -17,10 +18,9 @@ nav {
   height: 120px;
   width: 100%;
   padding: 1.5em;
-  background-color: #373373;
+  background-color: $purple;
   background-image: url("/images/fabric-1-dark.png");
   font-family: "Source Sans Pro", sans-serif;
-  font-size: 20px;
   color: #FFFFFF;
 
   a {
@@ -28,24 +28,29 @@ nav {
     color: #FFFFFF;
     font-size: 48px;
     font-weight: 700;
+    cursor: pointer;
   }
 
   button {
+
+    margin-right: 10px;
     display: inline-block;
     text-align: center;
     text-decoration: none;
     padding: 10px 15px;
-    border: 2px solid rgb(22, 3, 15);
+    border: none;
+    box-shadow: 0 2px 10px 0 rgba(55,51,115,.3);
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 1em;
     background-color: white;
+    color: $purple;
     transition-duration: 0.4s;
-    cursor: pointer;
+
   }
 
   button:hover {
-    background-color: rgb(22, 3, 15);
-    color: white;
+    cursor: pointer;
+    background-color: $grey;
   }
 }
 
@@ -55,8 +60,11 @@ nav {
     display: flex;
     align-self: center;
     margin-right: 50px;
+    font-size: 1.2em;
+    font-weight: 300;
     strong {
-      margin-left: 10px;
+      margin-left: 5px;
+      font-weight: 600;
     }
   }
 
