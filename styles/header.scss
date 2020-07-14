@@ -20,7 +20,6 @@ nav {
   color: #FFFFFF;
 
   a {
-    margin: 0 0 0 2.5rem;
     text-decoration: none;
     color: #FFFFFF;
     font-size: 48px;
@@ -45,5 +44,19 @@ nav {
     color: white;
   }
 }
+
+.right-nav {
+  display: flex;
+  span {
+    display: flex;
+    align-self: center;
+    margin-right: 50px;
+    strong {
+      margin-left: 10px;
+    }
+  }
+
+}
+
 
 

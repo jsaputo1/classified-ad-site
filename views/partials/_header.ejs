@@ -1,13 +1,13 @@
 <header>
   <nav>
-    <a href="/">KYJYJY</a>
-    <div>
+    <div class="left-nav">
+      <a href="/">KYJYJY</a>
+    </div>
+    <div class="right-nav">
       <% if (username) { %>
-      <span
-        >Logged in as:
+      <span>Logged in as:
         <strong><%= username %></strong>
       </span>
-      <!-- <i class="far fa-envelope"></i> -->
       <form method="GET" action="/users/myaccount">
         <button type="submit">My account</button>
       </form>
@@ -18,16 +18,16 @@
       <form method="GET" action="/login">
         <button type="submit">Login</button>
       </form>
+
       <!-- <form method="GET" action="/register">
         <button type="submit">Register</button>
       </form> -->
       <% } %>
+      <% // if (userAdmin) { %>
+      <form method="GET" action="/admin">
+        <button type="submit">Admin</button>
+      </form>
+      <% // } %>
     </div>
-
-    <% // if (userAdmin) { %>
-    <form method="GET" action="/admin">
-      <button type="submit">Admin</button>
-    </form>
-    <% // } %>
   </nav>
 </header>
