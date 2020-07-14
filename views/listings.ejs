@@ -65,21 +65,7 @@
           <a href="<%= products[value].thumbnail_photo_url%>" target="new">
             <img src="<%= products[value].thumbnail_photo_url%>" />
           </a>
-        </div>
-        <div class="listing-details-container">
-          <h2>
-            <%= products[value].title%>
-          </h2>
-          <h5>
-            Posted on: <%= products[value].date%>
-          </h5>
-          <h4 class="price">
-            $<%= products[value].price%>
-          </h4>
-          <h4>
-            <%= products[value].description %>
-          </h4>
-          <div class="listing-buttons">
+          <div class="favorite-button">
             <% if (isFavorite(products[value].id, favorites)) { %> <form method="POST"
               action="/favorites/remove_favorite/<%=products[value].id%>" class="remove-favorite-form">
               <button type="submit" class="button-favorite">
@@ -93,12 +79,27 @@
               </button>
             </form>
             <% } %>
-            <form method="GET" action="/messages/listings/<%=products[value].id%>/messages ">
-              <button type="submit" class="new-message-button">
-                Contact
-              </button>
-            </form>
           </div>
+
+        </div>
+        <div class="listing-details-text">
+          <h2>
+            <%= products[value].title%>
+          </h2>
+          <h5>
+            Posted on: <%= products[value].date%>
+          </h5>
+          <h4 class="price">
+            $<%= products[value].price%>
+          </h4>
+          <h4>
+            <%= products[value].description %>
+          </h4>
+          <form method="GET" action="/messages/listings/<%=products[value].id%>/messages ">
+            <button type="submit" class="contact-button">
+              Send a Message
+            </button>
+          </form>
         </div>
       </div>
 
