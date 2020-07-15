@@ -2,6 +2,22 @@
 $grey: #e9eaea;
 $greyBottomBorder: 5px solid $grey;
 $purple: #373373;
+$tablet-width: 1100px;
+$mobile-width: 700px;
+
+//Mix-Ins
+
+@mixin tablet {
+  @media (max-width: $tablet-width) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: $mobile-width) {
+    @content;
+  }
+}
 
 header {
   border-bottom: $greyBottomBorder;
@@ -20,13 +36,16 @@ nav {
   padding: 1.5em;
   background-color: $purple;
   background-image: url("/images/fabric-1-dark.png");
-  font-family: "Source Sans Pro", sans-serif;
-  color: #FFFFFF;
+
+  @include tablet() {
+    flex-direction: column;
+    height: 200px;
+   }
 
   a {
     text-decoration: none;
     color: #FFFFFF;
-    font-size: 48px;
+    font-size: 3em;
     font-weight: 700;
     cursor: pointer;
   }
@@ -56,16 +75,28 @@ nav {
 
 .right-nav {
   display: flex;
+  @include tablet() {
+    flex-direction: column;
+   }
   span {
     display: flex;
     align-self: center;
     margin-right: 50px;
     font-size: 1.2em;
     font-weight: 300;
+    color: #FFFFFF;
+    @include tablet() {
+      margin-bottom: 15px;
+     }
     strong {
       margin-left: 5px;
       font-weight: 600;
     }
+
+  }
+
+  .header-buttons {
+    display: flex;
   }
 
 }

@@ -1,33 +1,35 @@
 <header>
   <nav>
     <div class="left-nav">
-      <a href="/">KYJYJY</a>
+      <a href="/">Classifieds</a>
     </div>
     <div class="right-nav">
       <% if (username) { %>
       <span>Logged in as:
         <strong><%= username %></strong>
       </span>
-      <form method="GET" action="/users/myaccount">
-        <button type="submit">My account</button>
-      </form>
-      <form method="POST" action="/logout">
-        <button type="submit">Logout</button>
-      </form>
-      <% } else { %>
-      <form method="GET" action="/login">
-        <button type="submit">Login</button>
-      </form>
+      <div class="header-buttons">
+        <form method="GET" action="/users/myaccount">
+          <button type="submit">My account</button>
+        </form>
+        <form method="POST" action="/logout">
+          <button type="submit">Logout</button>
+        </form>
+        <% } else { %>
+        <form method="GET" action="/login">
+          <button type="submit">Login</button>
+        </form>
 
-      <!-- <form method="GET" action="/register">
+        <!-- <form method="GET" action="/register">
         <button type="submit">Register</button>
       </form> -->
-      <% } %>
-      <% // if (userAdmin) { %>
-      <form method="GET" action="/admin">
-        <button type="submit">Admin</button>
-      </form>
-      <% // } %>
+        <% } %>
+        <% // if (userAdmin) { %>
+        <form method="GET" action="/admin">
+          <button type="submit">Admin</button>
+        </form>
+        <% // } %>
+      </div>
     </div>
   </nav>
 </header>
